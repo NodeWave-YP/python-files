@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+supabase
+paho-mqtt
+bcrypt
+jose
