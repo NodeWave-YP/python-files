@@ -1,0 +1,80 @@
+<!-- templates/dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NodeWave Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-b from-blue-900 to-blue-300 min-h-screen text-white">
+
+  <div class="container mx-auto py-8 px-4">
+    <header class="flex justify-between items-center mb-8">
+      <h1 class="text-3xl font-bold">NodeWave {{ role | capitalize }} Dashboard</h1>
+      <a href="/logout" class="bg-red-500 hover:bg-red-600 px-4 py-2 rounded shadow">Logout</a>
+    </header>
+
+    {% if role == 'admin' %}
+      <!-- Admin Section -->
+      <section class="mb-10">
+        <h2 class="text-xl font-semibold mb-4">Network Overview</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {% for metric in metrics %}
+          <div class="bg-white text-gray-900 p-6 rounded shadow">
+            <h3 class="font-bold text-lg">Node ID: {{ metric.node_id }}</h3>
+            <p>MAC Address: {{ metric.mac_address or 'Unknown' }}</p>
+            <p>Signal Strength: {{ metric.signal_strength }}</p>
+            <p>Latency: {{ metric.latency }} ms</p>
+            <p>Data Usage: {{ metric.data_usage }} MB</p>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+
+      <section class="mb-10">
+        <h2 class="text-xl font-semibold mb-4">Network Alerts</h2>
+        {% if alerts %}
+          <ul class="list-disc list-inside bg-white text-gray-900 p-4 rounded">
+            {% for alert in alerts %}
+              <li>Node {{ alert.node_id }}: {{ alert.message }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="text-white">No alerts currently.</p>
+        {% endif %}
+      </section>
+
+      <section class="mb-10">
+        <h2 class="text-xl font-semibold mb-4">Manage Nodes</h2>
+        <!-- Example controls -->
+        <form method="post" action="/admin/toggle-user-access" class="space-y-4">
+          <label class="block">
+            Node ID:
+            <input type="text" name="node_id" class="text-black w-full p-2 rounded" required>
+          </label>
+          <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded shadow">Disable Internet</button>
+        </form>
+      </section>
+
+    {% elif role == 'user' %}
+      <!-- User Section -->
+      <section class="mb-10">
+        <h2 class="text-xl font-semibold mb-4">Your Node Metrics</h2>
+        <div class="bg-white text-gray-900 p-6 rounded shadow max-w-md">
+          <p><strong>Data Usage:</strong> {{ usage.data_usage }} MB</p>
+          <p><strong>Latency:</strong> {{ usage.latency }} ms</p>
+          <p><strong>Signal Strength:</strong> {{ usage.signal_strength }}</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-4">Node Info</h2>
+        <p class="text-white">This dashboard reflects real-time performance of your connected ESP node. For issues, contact your administrator.</p>
+      </section>
+    {% endif %}
+
+  </div>
+
+</body>
+</html>
