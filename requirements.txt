@@ -7,5 +7,6 @@ jose
 python-dotenv
 sqlalchemy
 psycopg2-binary
-python-decouple
+python-decouple==3.8
 passlib
+sqlalchemy
