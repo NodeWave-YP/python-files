@@ -3,10 +3,11 @@ uvicorn
 supabase
 paho-mqtt
 bcrypt
-jose
+pytohn-jose
 python-dotenv
 sqlalchemy
 psycopg2-binary
 python-decouple==3.8
 passlib
-sqlalchemy
+
+
