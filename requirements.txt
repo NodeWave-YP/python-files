@@ -4,3 +4,7 @@ supabase
 paho-mqtt
 bcrypt
 jose
+decouple
+python-dotenv
+sqlalchemy
+psycopg2-binary
