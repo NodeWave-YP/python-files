@@ -46,9 +46,6 @@ structlog==23.2.0
 # Production ASGI server alternatives
 gunicorn==21.2.0
 
-# Security headers and CORS
-python-cors==1.7.0
-
 # File handling
 aiofiles==23.2.1
 
@@ -58,9 +55,6 @@ netifaces==0.11.0
 
 # Cryptography for enhanced security
 cryptography==41.0.7
-
-# JSON Web Tokens
-PyJWT==2.8.0
 
 # Development and testing dependencies (optional for production)
 pytest==7.4.3
