@@ -1,14 +1,72 @@
-fastapi
-uvicorn
-supabase
-paho-mqtt
-bcrypt
-pytohn-jose[cryptography]
-python-dotenv
-sqlalchemy
-psycopg2-binary
+# Core FastAPI and web framework dependencies
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+starlette==0.27.0
+
+# Database dependencies
+sqlalchemy==2.0.23
+alembic==1.12.1
+
+# Authentication and security
+python-jose[cryptography]==3.3.0
+python-multipart==0.0.6
+passlib[bcrypt]==1.7.4
+bcrypt==4.0.1
+
+# Template engine
+jinja2==3.1.2
+
+# Environment and configuration
 python-decouple==3.8
-passlib
+python-dotenv==1.0.0
 
+# Supabase integration
+supabase==2.0.2
 
+# MQTT client
+paho-mqtt==1.6.1
 
+# Validation and data processing
+pydantic==2.5.0
+email-validator==2.1.0
+
+# HTTP client for external API calls
+httpx==0.25.2
+requests==2.31.0
+
+# Date and time utilities
+python-dateutil==2.8.2
+
+# Type checking (development)
+typing-extensions==4.8.0
+
+# Logging and monitoring
+structlog==23.2.0
+
+# Production ASGI server alternatives
+gunicorn==21.2.0
+
+# Security headers and CORS
+python-cors==1.7.0
+
+# File handling
+aiofiles==23.2.1
+
+# Network utilities (for MAC address lookup)
+psutil==5.9.6
+netifaces==0.11.0
+
+# Cryptography for enhanced security
+cryptography==41.0.7
+
+# JSON Web Tokens
+PyJWT==2.8.0
+
+# Development and testing dependencies (optional for production)
+pytest==7.4.3
+pytest-asyncio==0.21.1
+black==23.11.0
+flake8==6.1.0
+
+# Environment-specific dependencies for production
+redis==5.0.1
